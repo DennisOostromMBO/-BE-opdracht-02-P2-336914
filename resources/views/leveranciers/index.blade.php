@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Overzicht Leveranciers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
     <h1>Overzicht Leveranciers</h1>
@@ -15,6 +16,8 @@
                 <th>Contactpersoon</th>
                 <th>Leveranciernummer</th>
                 <th>Mobiel</th>
+                <th>Aantal verschillende producten</th>
+                <th>Toon Producten</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +28,12 @@
                     <td>{{ $leverancier->ContactPersoon }}</td>
                     <td>{{ $leverancier->LeverancierNummer }}</td>
                     <td>{{ $leverancier->Mobiel }}</td>
+                    <td>{{ $leverancier->producten_count }}</td> 
+                    <td>
+                        <a href="{{ route('leverancier.producten', $leverancier->Id) }}">
+                          <i class="bi bi-box"></i> 
+                        </a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

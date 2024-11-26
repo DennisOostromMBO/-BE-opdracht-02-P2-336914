@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
         ]);
         $this->call([
             LeverancierSeeder::class,
+            ProductSeeder::class,
+            ProductPerLeverancierSeeder::class, 
         ]);
     }
 }

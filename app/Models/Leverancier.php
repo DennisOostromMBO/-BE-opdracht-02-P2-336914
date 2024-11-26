@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Leverancier extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'leveranciers';
 
     protected $fillable = [
@@ -18,4 +18,9 @@ class Leverancier extends Model
         'Mobiel',
     ];
     public $timestamps = false;
+
+    public function producten()
+    {
+        return $this->belongsToMany(Product::class, 'product_per_leveranciers', 'LeverancierId', 'ProductId');
+    }
 }
