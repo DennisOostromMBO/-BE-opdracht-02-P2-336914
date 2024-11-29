@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Support\Facades\DB;
 use App\Repositories\GeleverdeProducten;
 use App\Models\Leverancier;
@@ -36,14 +35,18 @@ class LeverancierController extends Controller
     {
         // Haal de leverancier op via het ID
         $leverancier = Leverancier::findOrFail($id);
-
+    
         // Haal de producten voor deze leverancier op via de repository
         $products = $this->productRepo->getProductsByLeverancier($id);
-
-        // Geef de gegevens door aan de view
+    
+        // Als er geen producten zijn, geef een melding door en stuur na 3 seconden door
+        if ($products instanceof \Illuminate\Support\Collection && $products->isEmpty()) {
+            // Als er geen producten zijn, toon je de boodschap maar ga je naar de pagina zonder te wachten
+            return view('leveranciers.producten', compact('leverancier', 'products'))->with('message', 'Dit bedrijf heeft tot nu toe geen producten geleverd aan Jamin.');
+        }
+    
+        // Geef de gegevens door aan de view als er producten zijn
         return view('leveranciers.producten', compact('leverancier', 'products'));
-
     }
+    
 }
-
-
