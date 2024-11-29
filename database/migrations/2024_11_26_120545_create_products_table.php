@@ -1,11 +1,9 @@
 <?php
- 
+
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Schema;
- 
+
 return new class extends Migration
 {
     /**
@@ -13,17 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement('DROP PROCEDURE IF EXISTS create_products_table');
-        $sql = File::get(database_path('sql/sp_create_products_table.sql'));
+        // Read the SQL file that contains the table creation statement
+        $sql = File::get(database_path('sql/products.sql'));
+
+        // Execute the SQL without preparing it
         DB::unprepared($sql);
-        DB::select('CALL create_products_table()');
     }
- 
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        DB::statement('DROP PROCEDURE IF EXISTS create_products_table');
+        // Drop the table in the down method to reverse the migration
+        DB::statement('DROP TABLE IF EXISTS products');
     }
 };

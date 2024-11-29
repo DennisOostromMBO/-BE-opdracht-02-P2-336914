@@ -26,10 +26,10 @@
         <tbody>
             @foreach ($products as $product)
                 <tr>
-                    <td>{{ $product->Productnaam }}</td>
-                    <td>{{ $product->Aantal }}</td>
-                    <td>{{ $product->Verpakkingseenheid }}</td>
-                    <td>{{ $product->LaatsteLevering }}</td>
+                    <td>{{ $product->Naam }}</td>
+                    <td>{{ $product->AantalAanwezig }}</td>
+                    <td>{{ $product->VerpakkingsEenheid }}</td>
+                    <td>{{ $product->DatumLevering }}</td>
                     <td>
                           <i class="bi bi-plus"></i> 
                     </td>

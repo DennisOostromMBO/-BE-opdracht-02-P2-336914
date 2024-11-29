@@ -1,10 +1,8 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -13,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement('DROP PROCEDURE IF EXISTS create_leveranciers_table');
-        $sql = File::get(database_path('sql/sp_create_leveranciers_table.sql'));
+        // Read the SQL file that contains the table creation statement
+        $sql = File::get(database_path('sql/leveranciers.sql'));
+
+        // Execute the SQL without preparing it
         DB::unprepared($sql);
-        DB::select('CALL create_leveranciers_table()');
     }
 
     /**
@@ -24,6 +23,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement('DROP PROCEDURE IF EXISTS create_leveranciers_table');
+        // Drop the table in the down method to reverse the migration
+        DB::statement('DROP TABLE IF EXISTS leveranciers');
     }
 };
