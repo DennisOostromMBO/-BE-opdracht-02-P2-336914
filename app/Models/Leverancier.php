@@ -23,4 +23,6 @@ class Leverancier extends Model
     {
         return $this->belongsToMany(Product::class, 'product_per_leveranciers', 'LeverancierId', 'ProductId');
     }
+    
+    
 }

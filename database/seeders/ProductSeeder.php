@@ -15,7 +15,7 @@ class ProductSeeder extends Seeder
     public function run()
     {
         DB::table('products')->insert([
-            ['Naam' => 'Mintnootjes', 'Barcode' => '8719587321278'],
+            ['Naam' => 'Mintnopjes', 'Barcode' => '8719587321278'],
             ['Naam' => 'Schoolkrijt', 'Barcode' => '8719587326713'],
             ['Naam' => 'Honigdrop', 'Barcode' => '8719587327836'],
             ['Naam' => 'Zure Beren', 'Barcode' => '8719587321441'],

@@ -28,7 +28,7 @@
                     <td>{{ $leverancier->ContactPersoon }}</td>
                     <td>{{ $leverancier->LeverancierNummer }}</td>
                     <td>{{ $leverancier->Mobiel }}</td>
-                    <td>{{ $leverancier->producten_count }}</td> 
+                    <td>{{ $leverancier->unieke_producten_count }}</td>
                     <td>
                         <a href="{{ route('leverancier.producten', $leverancier->Id) }}">
                           <i class="bi bi-box"></i> 

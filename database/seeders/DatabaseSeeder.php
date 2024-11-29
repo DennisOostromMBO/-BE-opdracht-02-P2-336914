@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             LeverancierSeeder::class,
             ProductSeeder::class,
             ProductPerLeverancierSeeder::class, 
+            MagazijnSeeder::class,
         ]);
     }
 }

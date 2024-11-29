@@ -19,8 +19,7 @@
                 <th>Productnaam</th>
                 <th>Aantal</th>
                 <th>Verpakkingseenheid</th>
-                <th>Laatste levering</th>
-                <th>Nieuwe levering</th>
+                <th>Laatste Levering</th>
             </tr>
         </thead>
         <tbody>
@@ -30,9 +29,6 @@
                     <td>{{ $product->Aantal }}</td>
                     <td>{{ $product->Verpakkingseenheid }}</td>
                     <td>{{ $product->LaatsteLevering }}</td>
-                    <td>
-                          <i class="bi bi-plus"></i> 
-                    </td>
                 </tr>
             @endforeach
         </tbody>
