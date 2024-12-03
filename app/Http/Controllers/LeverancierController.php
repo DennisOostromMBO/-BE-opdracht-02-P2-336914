@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Repositories\GeleverdeProducten;
 use App\Models\Leverancier;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class LeverancierController extends Controller
@@ -41,6 +42,12 @@ class LeverancierController extends Controller
     
         // Geef de gegevens door aan de view als er producten zijn
         return view('leveranciers.producten', compact('leverancier', 'products'));
+    } 
+
+    public function edit($id)
+    {
+        $leverancier = Leverancier::findOrFail($id);
+        return view('leveranciers.edit', compact('leverancier'));
     }
     
 }

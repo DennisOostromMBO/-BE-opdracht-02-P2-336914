@@ -11,4 +11,11 @@ Route::resource('/leverancier', LeverancierController::class);
 
 Route::get('/leveranciers', [LeverancierController::class, 'index'])->name('leveranciers.index');
 Route::get('/leverancier/{id}/producten', [LeverancierController::class, 'showProducten'])->name('leverancier.producten');
-Route::get('/leveranciers/create', [LeverancierController::class, 'create'])->name('leveranciers.create');
+Route::get('/leveranciers/{id}/edit', [LeverancierController::class, 'edit'])->name('leveranciers.edit');
+
+
+
+
+
+
+

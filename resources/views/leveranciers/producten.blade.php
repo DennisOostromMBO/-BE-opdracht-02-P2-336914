@@ -35,7 +35,10 @@
                                 <td class="py-3 px-4">{{ $product->VerpakkingsEenheid }}</td>
                                 <td class="py-3 px-4">{{ $product->DatumLevering }}</td>
                                 <td class="py-3 px-4">
-                                    <i class="bi bi-plus text-indigo-600 hover:text-indigo-800 cursor-pointer">✙</i>
+                                    <a href="{{ route('leverancier.edit', $leverancier->Id) }}" 
+                                       class="text-indigo-600 hover:text-indigo-800">
+                                       <i class="bi bi-plus text-indigo-600 hover:text-indigo-800 cursor-pointer">✙</i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
@@ -45,12 +48,12 @@
         @endif
 
         <div class="flex space-x-4 justify-center">
-            <button class="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">
-                <a href="{{ route('leveranciers.index') }}" class="text-white">Terug</a>
-            </button>
-            <button class="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">
-                <a href="{{ route('leveranciers.index') }}" class="text-white">Home</a>
-            </button>
+            <a href="{{ route('leveranciers.index') }}" class="bg-indigo-500 text-white px-6 py-2 rounded-md hover:bg-indigo-600 text-center">
+                Terug
+            </a>
+            <a href="{{ route('leveranciers.index') }}" class="bg-indigo-500 text-white px-6 py-2 rounded-md hover:bg-indigo-600 text-center">
+                Home
+            </a>
         </div>
     </div>
 </body>
