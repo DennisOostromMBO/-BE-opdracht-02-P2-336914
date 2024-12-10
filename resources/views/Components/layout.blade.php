@@ -19,9 +19,6 @@
         <main class="flex-1 p-4">
             {{ $slot }}
         </main>
-        <footer class="bg-gray-800 text-white p-4">
-            <p>&copy; {{ date('Y') }}</p>
-        </footer>
     </div>
 </body>
 </html>

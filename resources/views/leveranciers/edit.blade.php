@@ -14,35 +14,59 @@
 
             <!-- Formulier voor de levering product -->
             <div class="bg-white p-6 shadow-lg rounded-lg">
-                <div class="space-y-6">
-                    <div class="mb-6">
-                        <div class="flex items-center justify-between">
-                            <label for="aantal" class="text-lg font-medium">Aantal producteenheden:</label>
-                            <input type="number" id="aantal" class="border rounded px-4 py-2 w-1/2" placeholder="Aantal producteenheden">
+                <form action="{{ route('producten.update', ['leverancierId' => $leverancier->Id, 'productId' => $product->ProductId]) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+
+                    <div class="space-y-6">
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between">
+                                <label for="aantal" class="text-lg font-medium">Aantal producteenheden:</label>
+                                <input 
+                                    type="number" 
+                                    id="aantal" 
+                                    name="AantalAanwezig" 
+                                    class="border rounded px-4 py-2 w-1/2" 
+                                    placeholder="Aantal producteenheden" 
+                                    value="{{ old('AantalAanwezig', $magazijn->AantalAanwezig ?? '') }}" 
+                                    required
+                                >
+                            </div>
+
+                            <div class="flex items-center justify-between mt-4">
+                                <label for="datum" class="text-lg font-medium">Datum levering:</label>
+                                <input 
+                                    type="date" 
+                                    id="datum" 
+                                    name="DatumLevering" 
+                                    class="border rounded px-4 py-2 w-1/2 @error('DatumLevering') border-red-500 @enderror"
+                                    value="{{ old('DatumLevering', $product->DatumLevering) }}"
+                                >
+                            </div>
+                            
+                            @error('DatumLevering')
+                                <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+                            @enderror
+                            
                         </div>
 
-                        <div class="flex items-center justify-between mt-4">
-                            <label for="datum" class="text-lg font-medium">Datum eerstvolgende levering:</label>
-                            <input type="date" id="datum" class="border rounded px-4 py-2 w-1/2">
-                        </div>
-                    </div>
-
-                    <div class="mt-6 flex justify-between">
-                        <button class="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">
-                            <a href="{{ route('leveranciers.index') }}" class="text-white">Sla op</a>
-                        </button>
-
-                        <div class="flex space-x-4">
-                            <button class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400">
-                                <a href="{{ route('leverancier.producten', $leverancier->Id) }}" class="text-gray-700">Terug</a>
+                        <div class="mt-6 flex justify-between">
+                            <button type="submit" class="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">
+                                Sla op
                             </button>
 
-                            <button class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400">
-                                <a href="{{ route('leveranciers.index') }}" class="text-gray-700">Home</a>
-                            </button>
+                            <div class="flex space-x-4">
+                                <button class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400">
+                                    <a href="{{ route('leverancier.producten', $leverancier->Id) }}" class="text-gray-700">Terug</a>
+                                </button>
+
+                                <button class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400">
+                                    <a href="{{ route('leveranciers.index') }}" class="text-gray-700">Home</a>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </body>
